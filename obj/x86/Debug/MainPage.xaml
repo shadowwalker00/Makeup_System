@@ -1,0 +1,188 @@
+﻿<Page
+    x:Class="BeautyFace.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BeautyFace"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <Style x:Key="theStyle" TargetType="AutoSuggestBox">
+            <Setter Property="TextBoxStyle">
+                <Setter.Value>
+                    <Style TargetType="TextBox">
+                        <Setter Property="FontSize" Value="28"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="listViewstyle" TargetType="ListViewItem">
+            <Setter Property="Margin" Value="0,0,0,0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+    </Page.Resources>
+    <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup x:ConnectionId='1' x:Name="VisualStateGroup">
+            <VisualState x:ConnectionId='2' x:Name="VisualStatePhone">
+                <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowWidth="0"/>
+                </VisualState.StateTriggers>
+                <VisualState.Setters>
+                    <Setter Target="topBar.BackGroud" Value="DarkBlue" />
+                </VisualState.Setters>
+            </VisualState>
+            <VisualState x:ConnectionId='3' x:Name="VisualStateTablet">
+                <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowWidth="600" />
+                </VisualState.StateTriggers>
+                <VisualState.Setters>
+                    <Setter Target="topBar.BackGroud" Value="#FF7CABEE"/>
+                </VisualState.Setters>
+            </VisualState>
+        </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <RelativePanel x:ConnectionId='4' Grid.Row="0"
+                       Name="topBar"
+                       BorderBrush="Black" Background="#FD7CABEE">
+            <Button x:ConnectionId='17' Name="HumButton"
+                                           
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="36"
+                    Foreground="White"
+                    Content="&#xE700;"
+                    RelativePanel.AlignLeftWithPanel="True" Background="#337CABEE" />
+            <TextBlock x:ConnectionId='18' Name="titleBlock"
+                       FontSize="36"
+                       Foreground="White"
+                       Margin="20,0,0,0"
+                       RelativePanel.RightOf="HumButton"/>
+            <Image Source="Assets/StoreLogo.png"
+                   RelativePanel.AlignRightWithPanel="True"
+                   Height="50"/>
+        </RelativePanel>
+        <SplitView x:ConnectionId='5' Grid.Row="1"
+                   Name="mySplitView"
+                   DisplayMode="CompactOverlay"
+                   CompactPaneLength="56"
+                   OpenPaneLength="200">
+            <SplitView.Pane>
+                <RelativePanel Width="200" Background="#FF7CABEE">
+                    <ListView x:ConnectionId='6' Name="myListBox"
+                              Width="200"
+                              SelectionMode="Single"
+                              RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                                            Background="#FF7CABEE">
+                        <ListView.Header>
+                            <ListViewItem IsEnabled="False" Background="#FF7CABEE">
+                                <TextBlock Text="功能"
+                                           Foreground="White"/>
+                            </ListViewItem>
+                        </ListView.Header>
+                        <ListViewItem x:ConnectionId='10' Name="Recog" 
+                                  Style="{StaticResource listViewstyle}">
+                            <StackPanel Orientation="Horizontal"
+                                        Margin="0,0,0,0">
+                                <Rectangle x:ConnectionId='15' Name="rec1"
+                                           Fill="Orange"
+                                           VerticalAlignment="Stretch"
+                                           Width="4"
+                                           Margin="0,0,10,0"/>
+                                <TextBlock Text="&#xE71E;"
+                                           FontFamily="Segoe MDL2 Assets"
+                                           Foreground="White"
+                                           VerticalAlignment="Center"
+                                           FontSize="24"/>
+                                <TextBlock Text="识别"
+                                           VerticalAlignment="Center"
+                                           Foreground="White"
+                                           Margin="20,0,0,0"
+                                           FontSize="27"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem x:ConnectionId='11' Name="Assembly" 
+                                      Style="{StaticResource listViewstyle}">
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle x:ConnectionId='14' Name="rec2"
+                                           Fill="Gray"
+                                           VerticalAlignment="Stretch"
+                                           Width="4"
+                                           Margin="0,0,10,0"/>
+                                <TextBlock Text="&#xE77B;"
+                                       FontFamily="Segoe MDL2 Assets"
+                                       Foreground="White"
+                                       FontSize="24"
+                                       VerticalAlignment="Center"/>
+                                <TextBlock Text="美颜"
+                                       Foreground="White"
+                                       Margin="20,0,0,0"
+                                           VerticalAlignment="Center"
+                                       FontSize="27"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem x:ConnectionId='12' Name="Emoji" 
+                                  Style="{StaticResource listViewstyle}">
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle x:ConnectionId='13' Name="rec3"
+                                           Fill="Gray"
+                                           VerticalAlignment="Stretch"
+                                           Width="4"
+                                           Margin="0,0,10,0"/>
+                                <TextBlock Text="&#xE899;"
+                                       FontFamily="Segoe MDL2 Assets"
+                                       Foreground="White"
+                                           VerticalAlignment="Center"
+                                       FontSize="24"/>
+                                <TextBlock Text="表情包"
+                                       Foreground="White"
+                                       VerticalAlignment="Center"
+                                       Margin="20,0,0,0"
+                                       FontSize="27"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem IsEnabled="False"
+                                     Padding="5,0,5,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Height="3"
+                                           Width="200"
+                                           Fill="White"/>
+                            </StackPanel>
+                        </ListViewItem>
+                    </ListView>
+
+                    <!--下面是导航栏底部的ListView-->
+                    <ListView x:ConnectionId='7' RelativePanel.AlignBottomWithPanel="True"
+                              Name="botListView"
+                              Width="200"
+                                                                              Background="#FF7CABEE">
+                        <ListViewItem x:ConnectionId='8' Name="settingItem"
+                                      Style="{StaticResource listViewstyle}"
+                                      Margin="0,0,0,10">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock x:ConnectionId='9' Text="&#xE713;"
+                                           FontFamily="Segoe MDL2 Assets"
+                                           FontSize="24"
+                                           VerticalAlignment="Center"
+                                           Name="settingButton"
+                                           Foreground="White"/>
+                                <TextBlock Text="设置"
+                                           Margin="20,0,0,0"
+                                           Foreground="White"
+                                           FontSize="27"/>
+                            </StackPanel>
+                        </ListViewItem>
+                    </ListView>
+                </RelativePanel>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Frame x:ConnectionId='16' Name="MyFrame"></Frame>
+            </SplitView.Content>
+        </SplitView>
+    </Grid>
+</Page>
+
